@@ -1,0 +1,7 @@
+src/**/*.o
+src/**/*.d
+tower
+tower.exe
+build.tar.gz
+.vscode
+memoryleak
