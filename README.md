@@ -28,19 +28,19 @@ $ make clean
 
 ## Game Preview
 # EDITOR MENU
-- ![PNG](./screenshots/editorMenu.png)
+- ![PNG](./Showcase/editorMenu.png)
 # GAME MENU
-- ![PNG](./screenshots/gameMenu.png)
+- ![PNG](./Showcase/gameMenu.png)
 # GAME OVER MENU
-- ![PNG](./screenshots/gameOver.png)
+- ![PNG](./Showcase/gameOver.png)
 # GAME RULES MENU
-- ![PNG](./screenshots/gameRules.png)
+- ![PNG](./Showcase/gameRules.png)
 # GAME
-- ![PNG](./screenshots/playGame.png)
+- ![PNG](./Showcase/playGame.png)
 # GAME PLAY MENU
-- ![PNG](./screenshots/playMenu.png)
+- ![PNG](./Showcase/playMenu.png)
 # LEVEL SELECTED MENU
-- ![PNG](./screenshots/selectLevelMenu.png)
+- ![PNG](./Showcase/selectLevelMenu.png)
 
 ## Asset Credits
 - Asset tower : Kenney https://www.kenney.nl/assets/tower-defense-top-down
