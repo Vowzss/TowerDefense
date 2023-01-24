@@ -1,12 +1,12 @@
 PROGRAM=TowerDefense
 
 # Add your objs to generate in OBJS var
-LEVELEDITOR=src/levelEditor/levelEditor.o src/levelEditor/grid.o
-GAMESCENES=src/gameScenes/gameSelector.o src/gameScenes/game.o src/gameScenes/gameHowToPlay.o src/gameScenes/gameCredits.o src/gameScenes/gameWinner.o src/gameScenes/gameOver.o src/gameScenes/menu.o
-GAMEMANAGER=src/gameManager/gameTowers.o src/gameManager/gameEnemies.o src/gameManager/gamePlayer.o src/gameManager/gameTextures.o src/gameManager/gameSounds.o src/gameManager/gameWaves.o src/gameManager/gameTowerManager.o 
-SYSTEM=src/System/gameAnimator.o src/System/scene.o src/System/UIElement.o
+LEVELEDITOR=Sources/levelEditor/levelEditor.o Sources/levelEditor/grid.o
+GAMESCENES=Sources/gameScenes/gameSelector.o Sources/gameScenes/game.o Sources/gameScenes/gameHowToPlay.o Sources/gameScenes/gameCredits.o Sources/gameScenes/gameWinner.o Sources/gameScenes/gameOver.o Sources/gameScenes/menu.o
+GAMEMANAGER=Sources/gameManager/gameTowers.o Sources/gameManager/gameEnemies.o Sources/gameManager/gamePlayer.o Sources/gameManager/gameTextures.o Sources/gameManager/gameSounds.o Sources/gameManager/gameWaves.o Sources/gameManager/gameTowerManager.o 
+SYSTEM=Sources/System/gameAnimator.o Sources/System/scene.o Sources/System/UIElement.o
 
-OBJS=src/main.o $(GAMESCENES) $(LEVELEDITOR) $(GAMEMANAGER) $(SYSTEM)
+OBJS=Sources/main.o $(GAMESCENES) $(LEVELEDITOR) $(GAMEMANAGER) $(SYSTEM)
 
 
 CXX?=g++
@@ -14,8 +14,8 @@ TARGET?=$(shell $(CXX) -dumpmachine)
 
 OPTIM_FLAGS?=-O0
 CXXFLAGS=$(OPTIM_FLAGS) -g -Wall -Wextra -Wno-unused-parameter
-CPPFLAGS=-Iinclude -Ithird_party/include -MMD
-LDFLAGS=-Lthird_party/libs-$(TARGET)
+CPPFLAGS=-IIncludes -IExternals/Includes -MMD
+LDFLAGS=-LExternals/libs-$(TARGET)
 LDLIBS=-lraylib
 
 ifeq ($(TARGET),x86_64-linux-gnu)
@@ -26,7 +26,7 @@ else ifeq ($(TARGET),wasm32-unknown-emscripten)
 OPTIM_FLAGS=-Os
 LDFLAGS+=-s ASYNCIFY
 LDFLAGS+=-s USE_GLFW=3
-LDFLAGS+=--preload-file assets
+LDFLAGS+=--preload-file Resources
 EXT=.html
 endif
 
@@ -44,7 +44,7 @@ all: $(PROGRAM)$(EXT)
 $(PROGRAM)$(EXT): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
-build.tar.gz: $(PROGRAM) $(wildcard assets/*)
+build.tar.gz: $(PROGRAM) $(wildcard Resources/*)
 	tar czf build.tar.gz $(PROGRAM) assets
 
 host: $(PROGRAM)$(EXT)
